@@ -1,24 +1,30 @@
 import csv
-
+import os
+import sys
 from datetime import date, time, datetime
 from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import Nominatim
 from pyparsing import empty
 
-file_name_caracteristiques = "/home/renando/Documents/#M2 ICE Renan/projetBigData/caracteristiques_2009.csv"
-out_file_name_caracteristiques = "/home/renando/Documents/#M2 ICE Renan/projetBigData/edit/" \
-                                 "NEW_caracteristiques_2009.csv"
 
-file_name_lieu = "/home/renando/Documents/#M2 ICE Renan/projetBigData/lieux_2009.csv"
-out_file_name_lieu = "/home/renando/Documents/#M2 ICE Renan/projetBigData/edit/NEW_lieux_2009.csv"
+file_name_caracteristiques = "/home/renando/PycharmProjects/BigData/original_csv/caracteristiques_2009.csv"
+out_file_name_caracteristiques = "/home/renando/PycharmProjects/BigData/new_csv/NEW_caracteristiques_2009.csv"
 
-file_name_usagers = "/home/renando/Documents/#M2 ICE Renan/projetBigData/usagers_2009.csv"
-out_file_name_usagers = "/home/renando/Documents/#M2 ICE Renan/projetBigData/edit/NEW_usagers_2009.csv"
+file_name_lieu = "/home/renando/PycharmProjects/BigData/original_csv/lieux_2009.csv"
+out_file_name_lieu = "/home/renando/PycharmProjects/BigData/new_csv/NEW_lieux_2009.csv"
 
-file_name_vehicules = "/home/renando/Documents/#M2 ICE Renan/projetBigData/vehicules_2009.csv"
-out_file_name_vehicules = "/home/renando/Documents/#M2 ICE Renan/projetBigData/edit/NEW_vehicules_2009.csv"
+file_name_usagers = "/home/renando/PycharmProjects/BigData/original_csv/usagers_2009.csv"
+out_file_name_usagers = "/home/renando/PycharmProjects/BigData/new_csv/NEW_usagers_2009.csv"
+
+file_name_vehicules = "/home/renando/PycharmProjects/BigData/original_csv/vehicules_2009.csv"
+out_file_name_vehicules = "/home/renando/PycharmProjects/BigData/new_csv/NEW_vehicules_2009.csv"
 
 special_caractere = ['-', ' ', ',', ';', '|', '', '#', '*', '.', '!', '?']
+
+
+def check_file_exists(chemin_fichier):
+    if not os.path.isfile(chemin_fichier):
+        sys.exit("Le fichier "+os.path.splitext(chemin_fichier)[0]+" n'a pas été trouvé")
 
 
 def convert_year_month_day_hour_min_to_date(mois, jour, heure_minute):
@@ -141,7 +147,7 @@ def case_not_null_between_letter(valeur, letters):
 
 def special_adresse(adresse):
     """
-    On retire les caracteres spéciaux au debut d'un string
+    On retire les caracteres spéciaux au debut d'un string et on change les abreviation de route, rond, boulevard
     :param adresse:
     :return:
     """
@@ -149,7 +155,12 @@ def special_adresse(adresse):
         i = 0
         while adresse[i] in special_caractere:
             i += 1
-        adresse = adresse[i:]
+        adresse = str(adresse[i:]).upper()
+        if adresse.partition(' ')[0] == "RTE":
+            adresse = adresse.replace("RTE","ROUTE",1)
+        adresse = adresse.replace(" RTE "," ROUTE ")
+        adresse = adresse.replace("RD POINT","ROND POINT")
+        adresse = adresse.replace(" BD ","BOULEVARD ")
     return adresse
 
 
@@ -178,6 +189,8 @@ def get_lat_longitude(adresse, lat, long):
 
 
 print("[DEBUT] caracteristiques_2009")
+check_file_exists(file_name_caracteristiques)
+check_file_exists(out_file_name_caracteristiques)
 with open(file_name_caracteristiques, newline='') as csvfile:
     readCSV = csv.DictReader(csvfile, delimiter='	', quoting=csv.QUOTE_MINIMAL)
     with open(out_file_name_caracteristiques, 'w', newline='') as newCSVfile:
@@ -201,6 +214,8 @@ print('[FIN] fichier caracteristiques_2009')
 
 
 print("[DEBUT] usagers_2009.csv")
+check_file_exists(file_name_usagers)
+check_file_exists(out_file_name_usagers)
 with open(file_name_usagers, newline='') as csvfile:
     readCSV = csv.DictReader(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
     with open(out_file_name_usagers, 'w', newline='') as newCSVfile:
@@ -226,6 +241,8 @@ print('[FIN] fichier usagers_2009.csv')
 
 
 print("[DEBUT] lieux_2009.csv")
+check_file_exists(file_name_lieu)
+check_file_exists(out_file_name_lieu)
 with open(file_name_lieu, newline='') as csvfile:
     readCSV = csv.DictReader(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
     with open(out_file_name_lieu, 'w', newline='') as newCSVfile:
@@ -258,6 +275,8 @@ print('[FIN] fichier lieux_2009.csv')
 
 
 print("[DEBUT] vehicules_2009.csv")
+check_file_exists(file_name_vehicules)
+check_file_exists(out_file_name_vehicules)
 with open(file_name_vehicules, newline='') as csvfile:
     readCSV = csv.DictReader(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
     with open(out_file_name_vehicules, 'w', newline='') as newCSVfile:
