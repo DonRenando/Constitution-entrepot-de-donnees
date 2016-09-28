@@ -23,17 +23,22 @@ special_caractere = ['-', ' ', ',', ';', '|', '', '#', '*', '.', '!', '?']
 
 
 def check_file_exists(chemin_fichier):
+    """
+    On verifie si le fichier passe en parametre existe
+    :param chemin_fichier: Fichier avec son chemin absolu
+    :return:
+    """
     if not os.path.isfile(chemin_fichier):
         sys.exit("Le fichier "+os.path.splitext(chemin_fichier)[0]+" n'a pas été trouvé")
 
 
 def convert_year_month_day_hour_min_to_date(mois, jour, heure_minute):
     """
-    Permet de convertir en date
-    :param mois:
-    :param jour:
-    :param heure_minute:
-    :return:
+    Permet de convertir mois, jour, heure/minute en une date
+    :param mois: Mois en integer (ex : 10 pour octobre)
+    :param jour: Jour en integer (ex : 04)
+    :param heure_minute: Heure et minute de la forme 1615 pour 16h15min
+    :return: Une date
     """
     if mois.strip() is not "" and jour.strip() is not "":
         d = date(2009, int(mois), int(jour))
@@ -52,9 +57,9 @@ def convert_year_month_day_hour_min_to_date(mois, jour, heure_minute):
 
 def case_not_null(valeur):
     """
-    Permet d'avoir des cases vide au lieu de null ou caractere spéciaux
-    :param valeur:
-    :return:
+    Permet de verifier les valeurs que l'on passe en parametre
+    :param valeur: Valeur de type int ou str
+    :return:Valeur int ou str sans caractere speciaux
     """
     if valeur in special_caractere:
         return ""
@@ -68,9 +73,9 @@ def case_not_null(valeur):
 
 def case_not_null_commune(valeur):
     """
-    Permet d'avoir des cases vide au lieu de null ou caractere spéciaux
-    :param valeur:
-    :return:
+    Permet de verifier les valeurs que l'on passe en parametre specifique pour une commune
+    :param valeur: Numero de la commune
+    :return: Numero de la commune en 3 chiffres ( par ex : 320)
     """
     if valeur in special_caractere:
         return ""
@@ -83,11 +88,11 @@ def case_not_null_commune(valeur):
 
 def case_not_null_between(valeur, min_val, max_val):
     """
-    Valeur doit etre un int contenu entre min et max
-    :param valeur:
-    :param min_val:
-    :param max_val:
-    :return:
+    Permet de verifier une valeur qui doit etre un int contenu entre min et max
+    :param valeur: Valeur a verifier
+    :param min_val: Valeur minimal
+    :param max_val: Valeur maximal
+    :return: Valeur compris entre min et max sans caractere speciaux, sinon retourne 0
     """
     if valeur in special_caractere and min_val == 0:
         return "0"
@@ -101,9 +106,9 @@ def case_not_null_between(valeur, min_val, max_val):
 
 def case_not_null_between_catv(valeur):
     """
-    Valeur doit etre un int contenu entre min et max
-    :param valeur:
-    :return:
+    Permet de verifier une valeur qui doit etre un int contenu entre 1 et 40 ou egal a 99
+    :param valeur: Valeur a verifier
+    :return: Valeur compris entre 1 et 40 ou egal a 99, sinon retourne 0
     """
     if valeur in special_caractere:
         return "0"
@@ -116,9 +121,11 @@ def case_not_null_between_catv(valeur):
 
 def case_not_null_secu(valeur):
     """
-    Valeur doit etre un int contenu entre min et max
-    :param valeur:
-    :return:
+    Permet de verifier une valeur qui doit etre un int contenu entre 1 et 3, egal a 9, 11 et 13, 21 et 23,
+    31 et 33, 41 et 43, 91 et 93
+    :param valeur: Valeur
+    :return: Valeur compris entre 1 et 3, egal a 9, 11 et 13, 21 et 23,
+    31 et 33, 41 et 43, 91 et 93 sinon retourne 0
     """
     if valeur in special_caractere:
         return "0"
@@ -132,10 +139,10 @@ def case_not_null_secu(valeur):
 
 def case_not_null_between_letter(valeur, letters):
     """
-    Valeur doit etre un string contenu dans letters
-    :param valeur:
-    :param letters:
-    :return:
+    Permet de verifier si une valeur string est contenu dans le tableau letters
+    :param valeur: Valeur a verifier
+    :param letters: Tableau de String
+    :return: Valeur si compris dans letters sinon retourne vide
     """
     if valeur in special_caractere:
         return ""
@@ -147,9 +154,9 @@ def case_not_null_between_letter(valeur, letters):
 
 def special_adresse(adresse):
     """
-    On retire les caracteres spéciaux au debut d'un string et on change les abreviation de route, rond, boulevard
-    :param adresse:
-    :return:
+    On retire les caracteres spéciaux au debut de l'adresse et on change les abreviation de route, rond et boulevard
+    :param adresse: Une adresse
+    :return: L'adresse sans caractere speciaux au debut du string et sans abreviation
     """
     if adresse.strip() is not "":
         i = 0
@@ -157,18 +164,20 @@ def special_adresse(adresse):
             i += 1
         adresse = str(adresse[i:]).upper()
         if adresse.partition(' ')[0] == "RTE":
-            adresse = adresse.replace("RTE","ROUTE",1)
-        adresse = adresse.replace(" RTE "," ROUTE ")
-        adresse = adresse.replace("RD POINT","ROND POINT")
-        adresse = adresse.replace(" BD ","BOULEVARD ")
+            adresse = adresse.replace("RTE", "ROUTE", 1)
+        adresse = adresse.replace(" RTE ", " ROUTE ")
+        adresse = adresse.replace("RD POINT", "ROND POINT")
+        if adresse.partition(' ')[0] == "BD":
+            adresse = adresse.replace("BD", "BOULEVARD", 1)
+        adresse = adresse.replace(" BD ", "BOULEVARD ")
     return adresse
 
 
 def special_code_postal(code_postal):
     """
-    On retire le dernier 0 des departements
-    :param code_postal:
-    :return:
+    On retire le dernier 0 des departements qui on plus de deux chiffres
+    :param code_postal: Un code postal
+    :return: Le code postal
     """
     code_postal = str(code_postal)
     if len(code_postal) > 2 and code_postal[-1] == "0":
@@ -177,6 +186,13 @@ def special_code_postal(code_postal):
 
 
 def get_lat_longitude(adresse, lat, long):
+    """
+    Plus utilise
+    :param adresse:
+    :param lat:
+    :param long:
+    :return:
+    """
     if adresse.strip() is not "" and (lat not in special_caractere and long not in special_caractere):
         try:
             geolocator = Nominatim()
