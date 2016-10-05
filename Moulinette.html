@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Moulinette</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Moulinette</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/renando/PycharmProjects/BigData/Moulinette.py">/home/renando/PycharmProjects/BigData/Moulinette.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="csv.html">csv</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-case_not_null"><strong>case_not_null</strong></a>(valeur)</dt><dd><tt>Permet&nbsp;de&nbsp;verifier&nbsp;les&nbsp;valeurs&nbsp;que&nbsp;l'on&nbsp;passe&nbsp;en&nbsp;parametre<br>
+:param&nbsp;valeur:&nbsp;Valeur&nbsp;de&nbsp;type&nbsp;int&nbsp;ou&nbsp;str<br>
+:return:Valeur&nbsp;int&nbsp;ou&nbsp;str&nbsp;sans&nbsp;caractere&nbsp;speciaux</tt></dd></dl>
+ <dl><dt><a name="-case_not_null_between"><strong>case_not_null_between</strong></a>(valeur, min_val, max_val)</dt><dd><tt>Permet&nbsp;de&nbsp;verifier&nbsp;une&nbsp;valeur&nbsp;qui&nbsp;doit&nbsp;etre&nbsp;un&nbsp;int&nbsp;contenu&nbsp;entre&nbsp;min&nbsp;et&nbsp;max<br>
+:param&nbsp;valeur:&nbsp;Valeur&nbsp;a&nbsp;verifier<br>
+:param&nbsp;min_val:&nbsp;Valeur&nbsp;minimal<br>
+:param&nbsp;max_val:&nbsp;Valeur&nbsp;maximal<br>
+:return:&nbsp;Valeur&nbsp;compris&nbsp;entre&nbsp;min&nbsp;et&nbsp;max&nbsp;sans&nbsp;caractere&nbsp;speciaux,&nbsp;sinon&nbsp;retourne&nbsp;0</tt></dd></dl>
+ <dl><dt><a name="-case_not_null_between_catv"><strong>case_not_null_between_catv</strong></a>(valeur)</dt><dd><tt>Permet&nbsp;de&nbsp;verifier&nbsp;une&nbsp;valeur&nbsp;qui&nbsp;doit&nbsp;etre&nbsp;un&nbsp;int&nbsp;contenu&nbsp;entre&nbsp;1&nbsp;et&nbsp;40&nbsp;ou&nbsp;egal&nbsp;a&nbsp;99<br>
+:param&nbsp;valeur:&nbsp;Valeur&nbsp;a&nbsp;verifier<br>
+:return:&nbsp;Valeur&nbsp;compris&nbsp;entre&nbsp;1&nbsp;et&nbsp;40&nbsp;ou&nbsp;egal&nbsp;a&nbsp;99,&nbsp;sinon&nbsp;retourne&nbsp;0</tt></dd></dl>
+ <dl><dt><a name="-case_not_null_between_letter"><strong>case_not_null_between_letter</strong></a>(valeur, letters)</dt><dd><tt>Permet&nbsp;de&nbsp;verifier&nbsp;si&nbsp;une&nbsp;valeur&nbsp;string&nbsp;est&nbsp;contenu&nbsp;dans&nbsp;le&nbsp;tableau&nbsp;letters<br>
+:param&nbsp;valeur:&nbsp;Valeur&nbsp;a&nbsp;verifier<br>
+:param&nbsp;letters:&nbsp;Tableau&nbsp;de&nbsp;String<br>
+:return:&nbsp;Valeur&nbsp;si&nbsp;compris&nbsp;dans&nbsp;letters&nbsp;sinon&nbsp;retourne&nbsp;vide</tt></dd></dl>
+ <dl><dt><a name="-case_not_null_commune"><strong>case_not_null_commune</strong></a>(valeur)</dt><dd><tt>Permet&nbsp;de&nbsp;verifier&nbsp;les&nbsp;valeurs&nbsp;que&nbsp;l'on&nbsp;passe&nbsp;en&nbsp;parametre&nbsp;specifique&nbsp;pour&nbsp;une&nbsp;commune<br>
+:param&nbsp;valeur:&nbsp;Numero&nbsp;de&nbsp;la&nbsp;commune<br>
+:return:&nbsp;Numero&nbsp;de&nbsp;la&nbsp;commune&nbsp;en&nbsp;3&nbsp;chiffres&nbsp;(&nbsp;par&nbsp;ex&nbsp;:&nbsp;320)</tt></dd></dl>
+ <dl><dt><a name="-case_not_null_secu"><strong>case_not_null_secu</strong></a>(valeur)</dt><dd><tt>Permet&nbsp;de&nbsp;verifier&nbsp;une&nbsp;valeur&nbsp;qui&nbsp;doit&nbsp;etre&nbsp;un&nbsp;int&nbsp;contenu&nbsp;entre&nbsp;1&nbsp;et&nbsp;3,&nbsp;egal&nbsp;a&nbsp;9,&nbsp;11&nbsp;et&nbsp;13,&nbsp;21&nbsp;et&nbsp;23,<br>
+31&nbsp;et&nbsp;33,&nbsp;41&nbsp;et&nbsp;43,&nbsp;91&nbsp;et&nbsp;93<br>
+:param&nbsp;valeur:&nbsp;Valeur<br>
+:return:&nbsp;Valeur&nbsp;compris&nbsp;entre&nbsp;1&nbsp;et&nbsp;3,&nbsp;egal&nbsp;a&nbsp;9,&nbsp;11&nbsp;et&nbsp;13,&nbsp;21&nbsp;et&nbsp;23,<br>
+31&nbsp;et&nbsp;33,&nbsp;41&nbsp;et&nbsp;43,&nbsp;91&nbsp;et&nbsp;93&nbsp;sinon&nbsp;retourne&nbsp;0</tt></dd></dl>
+ <dl><dt><a name="-check_file_exists"><strong>check_file_exists</strong></a>(chemin_fichier)</dt><dd><tt>On&nbsp;verifie&nbsp;si&nbsp;le&nbsp;fichier&nbsp;passe&nbsp;en&nbsp;parametre&nbsp;existe<br>
+:param&nbsp;chemin_fichier:&nbsp;Fichier&nbsp;avec&nbsp;son&nbsp;chemin&nbsp;absolu<br>
+:return:</tt></dd></dl>
+ <dl><dt><a name="-convert_year_month_day_hour_min_to_date"><strong>convert_year_month_day_hour_min_to_date</strong></a>(mois, jour, heure_minute)</dt><dd><tt>Permet&nbsp;de&nbsp;convertir&nbsp;mois,&nbsp;jour,&nbsp;heure/minute&nbsp;en&nbsp;une&nbsp;date<br>
+:param&nbsp;mois:&nbsp;Mois&nbsp;en&nbsp;integer&nbsp;(ex&nbsp;:&nbsp;10&nbsp;pour&nbsp;octobre)<br>
+:param&nbsp;jour:&nbsp;Jour&nbsp;en&nbsp;integer&nbsp;(ex&nbsp;:&nbsp;04)<br>
+:param&nbsp;heure_minute:&nbsp;Heure&nbsp;et&nbsp;minute&nbsp;de&nbsp;la&nbsp;forme&nbsp;1615&nbsp;pour&nbsp;16h15min<br>
+:return:&nbsp;Une&nbsp;date</tt></dd></dl>
+ <dl><dt><a name="-get_lat_longitude"><strong>get_lat_longitude</strong></a>(adresse, lat, long)</dt><dd><tt>Plus&nbsp;utilise<br>
+:param&nbsp;adresse:<br>
+:param&nbsp;lat:<br>
+:param&nbsp;long:<br>
+:return:</tt></dd></dl>
+ <dl><dt><a name="-special_adresse"><strong>special_adresse</strong></a>(adresse)</dt><dd><tt>On&nbsp;retire&nbsp;les&nbsp;caracteres&nbsp;spéciaux&nbsp;au&nbsp;debut&nbsp;de&nbsp;l'adresse&nbsp;et&nbsp;on&nbsp;change&nbsp;les&nbsp;abreviations&nbsp;de&nbsp;route,&nbsp;rond&nbsp;et&nbsp;boulevard<br>
+:param&nbsp;adresse:&nbsp;Une&nbsp;adresse<br>
+:return:&nbsp;L'adresse&nbsp;sans&nbsp;caractere&nbsp;speciaux&nbsp;au&nbsp;debut&nbsp;du&nbsp;string&nbsp;et&nbsp;sans&nbsp;abreviation</tt></dd></dl>
+ <dl><dt><a name="-special_code_postal"><strong>special_code_postal</strong></a>(code_postal)</dt><dd><tt>On&nbsp;retire&nbsp;le&nbsp;dernier&nbsp;0&nbsp;des&nbsp;departements&nbsp;qui&nbsp;on&nbsp;plus&nbsp;de&nbsp;deux&nbsp;chiffres<br>
+:param&nbsp;code_postal:&nbsp;Un&nbsp;code&nbsp;postal<br>
+:return:&nbsp;Le&nbsp;code&nbsp;postal</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>csvfile</strong> = &lt;_io.TextIOWrapper name='/home/renando/PycharmPr...sv/vehicules_2009.csv' mode='r' encoding='UTF-8'&gt;<br>
+<strong>empty</strong> = empty<br>
+<strong>file_name_caracteristiques</strong> = '/home/renando/PycharmProjects/BigData/original_csv/caracteristiques_2009.csv'<br>
+<strong>file_name_lieu</strong> = '/home/renando/PycharmProjects/BigData/original_csv/lieux_2009.csv'<br>
+<strong>file_name_usagers</strong> = '/home/renando/PycharmProjects/BigData/original_csv/usagers_2009.csv'<br>
+<strong>file_name_vehicules</strong> = '/home/renando/PycharmProjects/BigData/original_csv/vehicules_2009.csv'<br>
+<strong>newCSVfile</strong> = &lt;_io.TextIOWrapper name='/home/renando/PycharmPr...EW_vehicules_2009.csv' mode='w' encoding='UTF-8'&gt;<br>
+<strong>out_file_name_caracteristiques</strong> = '/home/renando/PycharmProjects/BigData/new_csv/NEW_caracteristiques_2009.csv'<br>
+<strong>out_file_name_lieu</strong> = '/home/renando/PycharmProjects/BigData/new_csv/NEW_lieux_2009.csv'<br>
+<strong>out_file_name_usagers</strong> = '/home/renando/PycharmProjects/BigData/new_csv/NEW_usagers_2009.csv'<br>
+<strong>out_file_name_vehicules</strong> = '/home/renando/PycharmProjects/BigData/new_csv/NEW_vehicules_2009.csv'<br>
+<strong>readCSV</strong> = &lt;csv.DictReader object&gt;<br>
+<strong>row</strong> = {'Num_Acc': '200900074898', 'catv': '07', 'choc': '1', 'manv': '15', 'num_veh': 'B01', 'obs': '00', 'obsm': '9', 'occutc': '000', 'senc': '0'}<br>
+<strong>spamwriter</strong> = &lt;_csv.writer object&gt;<br>
+<strong>special_caractere</strong> = ['-', ' ', ',', ';', '|', '', '#', '*', '.', '!', '?']</td></tr></table>
+</body></html>

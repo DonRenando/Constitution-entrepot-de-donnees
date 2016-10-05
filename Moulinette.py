@@ -154,7 +154,7 @@ def case_not_null_between_letter(valeur, letters):
 
 def special_adresse(adresse):
     """
-    On retire les caracteres spéciaux au debut de l'adresse et on change les abreviation de route, rond et boulevard
+    On retire les caracteres spéciaux au debut de l'adresse et on change les abreviations de route, rond et boulevard
     :param adresse: Une adresse
     :return: L'adresse sans caractere speciaux au debut du string et sans abreviation
     """
@@ -236,7 +236,7 @@ with open(file_name_usagers, newline='') as csvfile:
     readCSV = csv.DictReader(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
     with open(out_file_name_usagers, 'w', newline='') as newCSVfile:
         spamwriter = csv.writer(newCSVfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-        spamwriter.writerow(['Num_Acc', 'place', 'catu', 'grav',	'sexe',	'trajet', 'secu', 'locp', 'actp', 'etatp',
+        spamwriter.writerow(['Num_Acc', 'place', 'catu', 'grav', 'sexe', 'trajet', 'secu', 'locp', 'actp', 'etatp',
                              'an_nais', 'num_veh'])
         for row in readCSV:
             spamwriter.writerow([
