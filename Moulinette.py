@@ -1,3 +1,12 @@
+"""
+L’objectif de cette Moulinette est de nettoyer, filtrer, et compléter
+les fichiers CSV des accidents corporels de la circulation de l'année 2009 disponible sur
+http://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/
+"""
+
+__author__ =  'DonRenando'
+__version__=  '1.0'
+
 import csv
 import os
 import sys
