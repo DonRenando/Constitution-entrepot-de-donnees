@@ -4,8 +4,8 @@ les fichiers CSV des accidents corporels de la circulation de l'année 2009 disp
 http://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/
 """
 
-__author__ =  'DonRenando'
-__version__=  '1.0'
+__author__ = 'DonRenando'
+__version__= '1.0'
 
 import csv
 import os
@@ -14,7 +14,7 @@ from datetime import date, time, datetime
 from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import Nominatim
 from pyparsing import empty
-
+import time as tme
 
 file_name_caracteristiques = "/home/renando/PycharmProjects/BigData/original_csv/caracteristiques_2009.csv"
 out_file_name_caracteristiques = "/home/renando/PycharmProjects/BigData/new_csv/NEW_caracteristiques_2009.csv"
@@ -60,7 +60,8 @@ def convert_year_month_day_hour_min_to_date(mois, jour, heure_minute):
         t = time(00, int(heure_minute[-2:]))
         date_complet = datetime.combine(d, t)
     else:
-        return d
+        t = time(00, 00)
+        date_complet = datetime.combine(d, t)
     return date_complet
 
 
@@ -108,9 +109,8 @@ def case_not_null_between(valeur, min_val, max_val):
     elif valeur in special_caractere:
         return ""
     else:
-        if type(valeur) is int and (min_val <= valeur <= max_val):
+        if min_val <= int(valeur) <= max_val:
             return int(valeur)
-    return valeur
 
 
 def case_not_null_between_catv(valeur):
@@ -212,7 +212,7 @@ def get_lat_longitude(adresse, lat, long):
             print("Error: geocode failed" + str(e))
     return [0, 0]
 
-
+time1 = tme.time()
 print("[DEBUT] caracteristiques_2009")
 check_file_exists(file_name_caracteristiques)
 check_file_exists(out_file_name_caracteristiques)
@@ -318,3 +318,7 @@ with open(file_name_vehicules, newline='') as csvfile:
                 row['num_veh']
             ])
 print('[FIN] fichier vehicules_2009.csv')
+
+time2 = tme.time()
+
+print('Function took %0.3f ms' % ((time2-time1)*1000.0))
